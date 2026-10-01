@@ -111,12 +111,74 @@ a {
 .bg-dark { background-color: var(--c-superficie-oscura); }
 .bg-white { background-color: var(--c-blanco); }
 
-/* CONTROL DE SESIÓN ADMIN EN CSS PURO */
+/* ==========================================================================
+   CONTROL DE SESIÓN Y CIERRE AUTOMÁTICO TRAS 60 MINUTOS (CSS PURO)
+   ========================================================================== */
 .admin-session-toggle {
   display: none;
 }
 
-/* Barra persistente superior de Admin (Oculta por defecto) */
+/* Animación de expiración a 3600 segundos (60 minutos) */
+@keyframes sessionTimeout {
+  0%, 99.9% {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.session-timeout-alert {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(24, 25, 27, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 20000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.timeout-card {
+  background-color: var(--c-blanco);
+  max-width: 480px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+}
+
+.timeout-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.timeout-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--c-burdeos);
+  margin-bottom: 0.5rem;
+}
+
+.timeout-card p {
+  font-size: 0.875rem;
+  color: var(--c-texto-secundario);
+  margin-bottom: 1.5rem;
+}
+
+/* Al marcar la sesión, se activa el reloj de inactividad de 60 minutos */
+#admin-session-check:checked ~ .session-timeout-alert {
+  animation: sessionTimeout 3600s forwards;
+}
+
+/* Barra persistente superior de Admin (Visible tras iniciar sesión) */
 .admin-session-banner {
   display: none;
   background-color: var(--c-negro-carbon);
@@ -164,6 +226,15 @@ a {
   border-radius: 4px;
 }
 
+.btn-admin-key {
+  color: var(--c-amarillo-brillante);
+  font-weight: 700;
+}
+
+.btn-admin-key:hover {
+  text-decoration: underline;
+}
+
 .btn-admin-logout {
   color: #FF8A80;
   cursor: pointer;
@@ -174,48 +245,51 @@ a {
   text-decoration: underline;
 }
 
-/* ACTIVACIÓN DE SESIÓN: Si el checkbox está marcado, mostrar la barra persistente */
+/* Si el checkbox está marcado, mostrar la barra superior */
 #admin-session-check:checked ~ .admin-session-banner {
   display: block;
 }
 
-/* Tipografía de Secciones */
-.section-head {
-  margin-bottom: 3.5rem;
-}
-
-.section-kicker {
-  display: inline-block;
+/* Botón de cierre de sesión interno en la cabecera del panel */
+.btn-danger-logout {
+  background-color: var(--c-rojo-institucional);
+  color: var(--c-blanco);
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
   font-family: var(--font-heading);
-  text-transform: uppercase;
   font-size: 0.8125rem;
   font-weight: 800;
-  letter-spacing: 2px;
-  color: var(--c-rojo-institucional);
-  margin-bottom: 0.5rem;
+  transition: all var(--tr-fast);
 }
 
-.section-title {
-  font-family: var(--font-heading);
-  font-size: 2.375rem;
-  font-weight: 800;
-  color: var(--c-burdeos);
-  line-height: 1.2;
+.btn-danger-logout:hover {
+  background-color: var(--c-rojo-oscuro);
+  transform: translateY(-2px);
 }
 
-.section-subtitle {
-  font-size: 1.125rem;
-  color: var(--c-texto-secundario);
-  max-width: 720px;
-  margin: 1rem auto 0;
+/* ==========================================================================
+   VALIDACIÓN ESTRICTA Y MENSAJE DE CREDENCIALES INCORRECTAS EN CSS PURO
+   ========================================================================== */
+.auth-error-notice {
+  display: none;
+  background-color: #FFEBEE;
+  border: 1px solid #FFCDD2;
+  color: var(--c-rojo-error);
+  font-size: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  text-align: left;
 }
 
-.separator-line {
-  width: 70px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--c-rojo-institucional), var(--c-amarillo));
-  margin: 1rem auto;
-  border-radius: 2px;
+/* Si se intenta pulsar enviar con inputs inválidos o vacíos, se muestra el aviso */
+.admin-auth-form:invalid .auth-error-notice {
+  display: block;
+}
+
+.admin-auth-form:invalid .submit-auth-btn {
+  opacity: 0.65;
+  pointer-events: none;
 }
 
 /* Cintillo Legal Superior */
@@ -240,17 +314,22 @@ a {
   gap: 1rem;
 }
 
+/* Enlace a la Consola Administrativa */
 .top-admin-badge {
-  color: var(--c-amarillo);
-  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: var(--c-amarillo-brillante);
+  font-weight: 800;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid rgba(234, 186, 61, 0.4);
 }
 
 .top-admin-badge:hover {
-  color: var(--c-blanco);
-  text-decoration: underline;
+  background-color: var(--c-amarillo);
+  color: var(--c-burdeos);
 }
 
 .legal-badge {
@@ -357,14 +436,7 @@ a {
   width: 100%;
 }
 
-.nav-btn-admin {
-  background-color: var(--c-burdeos);
-  color: var(--c-blanco);
-  padding: 0.5rem 1rem;
-  font-size: 0.8125rem;
-}
-
-/* Control Menú Responsive CSS Puro */
+/* Control Menú Responsive */
 .nav-toggle-check {
   display: none;
 }
@@ -932,9 +1004,7 @@ a {
   background-color: #FFFDF8;
 }
 
-/* ==========================================================================
-   SECCIÓN GALERÍA MULTIMEDIA EN LA PÁGINA PRINCIPAL
-   ========================================================================== */
+/* Sección Galería Multimedia */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1028,7 +1098,7 @@ a {
 }
 
 /* ==========================================================================
-   APARTADO DEDICADO DE GESTIÓN Y BBDD (PANTALLA COMPLETA AISLADA)
+   CONSOLA DE CONTROL Y GESTIÓN BBDD (PANTALLA AISLADA Y SEGURA)
    ========================================================================== */
 .admin-isolated-screen {
   position: fixed;
@@ -1041,7 +1111,6 @@ a {
   transition: opacity var(--tr-smooth), visibility var(--tr-smooth);
 }
 
-/* Se abre al hacer clic en cualquier enlace con href="#admin-management-space" */
 .admin-isolated-screen:target {
   opacity: 1;
   visibility: visible;
@@ -1084,8 +1153,13 @@ a {
   font-size: 0.8125rem;
 }
 
-/* COMPORTAMIENTO CONDICIONAL DE LA CONSOLA (CSS PURO) */
-/* Por defecto: Se muestra la pantalla de LOGIN y se oculta el DASHBOARD */
+.admin-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Por defecto se muestra la pantalla de LOGIN y se oculta el DASHBOARD */
 .admin-gate-login {
   display: flex;
   justify-content: center;
@@ -1098,7 +1172,7 @@ a {
   display: none;
 }
 
-/* SI LA SESIÓN ESTÁ ACTIVA (Checkbox marcado): Ocultar Login y MOSTRAR DASHBOARD */
+/* Si la sesión está activa: se oculta el login y se muestra el dashboard */
 #admin-session-check:checked ~ .admin-isolated-screen .admin-gate-login {
   display: none;
 }
@@ -1144,7 +1218,7 @@ a {
   margin-bottom: 2rem;
 }
 
-/* Pestañas de la Consola Desbloqueada */
+/* Pestañas de la Consola */
 .dash-tab-radio {
   display: none;
 }
@@ -1158,7 +1232,7 @@ a {
 }
 
 .dash-tab-label {
-  padding: 0.85rem 1.5rem;
+  padding: 0.85rem 1.4rem;
   font-family: var(--font-heading);
   font-size: 0.875rem;
   font-weight: 800;
@@ -1174,10 +1248,14 @@ a {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Activación de Vistas por Pestaña */
+.dash-tab-label.highlight-gold {
+  border-bottom: 3px solid var(--c-amarillo);
+}
+
 #tab-bbdd-gimnasio:checked ~ .dash-tab-bar label[for="tab-bbdd-gimnasio"],
 #tab-bbdd-escenarios:checked ~ .dash-tab-bar label[for="tab-bbdd-escenarios"],
 #tab-bbdd-usuarios:checked ~ .dash-tab-bar label[for="tab-bbdd-usuarios"],
+#tab-crud-horarios:checked ~ .dash-tab-bar label[for="tab-crud-horarios"],
 #tab-crud-galeria:checked ~ .dash-tab-bar label[for="tab-crud-galeria"] {
   background-color: var(--c-blanco);
   color: var(--c-burdeos);
@@ -1194,6 +1272,7 @@ a {
 #tab-bbdd-gimnasio:checked ~ .dash-tab-content-area #view-bbdd-gimnasio,
 #tab-bbdd-escenarios:checked ~ .dash-tab-content-area #view-bbdd-escenarios,
 #tab-bbdd-usuarios:checked ~ .dash-tab-content-area #view-bbdd-usuarios,
+#tab-crud-horarios:checked ~ .dash-tab-content-area #view-crud-horarios,
 #tab-crud-galeria:checked ~ .dash-tab-content-area #view-crud-galeria {
   display: block;
 }
@@ -1243,7 +1322,7 @@ a {
   background-color: #FFFDF5;
 }
 
-/* Estilos de la Pestaña CRUD de Galería */
+/* Tarjetas de Formularios CRUD */
 .crud-form-card,
 .crud-list-card {
   background-color: var(--c-gris-fondo);
@@ -1333,7 +1412,7 @@ a {
 }
 
 /* ==========================================================================
-   BOTÓN FLOTANTE DE INSTAGRAM (SOLO LOGO, PEQUEÑO Y MINIMALISTA)
+   BOTÓN FLOTANTE MINIMALISTA DE INSTAGRAM
    ========================================================================== */
 .floating-instagram-button {
   position: fixed;
@@ -1759,7 +1838,7 @@ label {
   margin-bottom: 1.25rem;
 }
 
-/* Lightbox Visor Multimedia CSS Puro */
+/* Lightbox Visor Multimedia */
 .lightbox-overlay {
   padding: 2rem;
 }
@@ -1910,6 +1989,9 @@ label {
 }
 
 .footer-contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   margin-top: 1.25rem;
 }
 
@@ -1952,7 +2034,6 @@ label {
   .dash-tab-bar { flex-direction: column; }
   .dash-tab-label { border-radius: 6px; }
 
-  /* Menú Hamburguesa en CSS Puro */
   .nav-toggle-label { display: flex; }
   .nav-menu {
     position: absolute;
@@ -1968,7 +2049,6 @@ label {
   .nav-toggle-check:checked ~ .nav-menu { display: block; }
   .nav-list { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .nav-btn { width: 100%; }
-  .nav-btn-admin { width: 100%; text-align: center; }
   
   .footer-bottom-bar { flex-direction: column; gap: 1rem; text-align: center; }
 }

@@ -14,16 +14,27 @@
   <!-- CONTROLADOR MAESTRO DE SESIÓN ADMIN EN CSS PURO -->
   <input type="checkbox" id="admin-session-check" class="admin-session-toggle">
 
-  <!-- BARRA FLOTANTE DE SESIÓN ADMINISTRADOR ACTIVA (Se muestra al iniciar sesión) -->
+  <!-- AVISO DE CIERRE AUTOMÁTICO TRAS 60 MINUTOS DE INACTIVIDAD -->
+  <div class="session-timeout-alert">
+    <div class="timeout-card">
+      <span class="timeout-icon">&#9200;</span>
+      <h4>Sesión Cerrada Automáticamente</h4>
+      <p>Han transcurrido 60 minutos de inactividad. La sesión administrativa se cerró por protocolos de seguridad institucional.</p>
+      <label for="admin-session-check" class="btn btn-sm btn-primary">Entendido / Volver a Conectarse</label>
+    </div>
+  </div>
+
+  <!-- BARRA DE SESIÓN ACTIVA (Visible solo al iniciar sesión) -->
   <div class="admin-session-banner">
     <div class="container admin-banner-content">
       <div class="admin-status-indicator">
         <span class="status-dot-admin"></span>
-        <span><strong>Sesión de Administrador Activa:</strong> Gustavo Andrés Ramos Quinto (SuperAdmin Root)</span>
+        <span><strong>Sesión Activa:</strong> Consola de Control y Gestión BBDD</span>
       </div>
       <div class="admin-banner-actions">
-        <a href="#admin-management-space" class="btn-admin-action">&#9881; Ir al Panel de BBDD &amp; Gestión</a>
-        <label for="admin-session-check" class="btn-admin-logout" title="Cerrar Sesión">&#10006; Salir de Admin</label>
+        <a href="#admin-management-space" class="btn-admin-action">&#9881; Panel de BBDD &amp; Horarios</a>
+        <a href="#admin-change-password-modal" class="btn-admin-key" title="Cambiar Contraseña">&#128273; Cambiar Clave</a>
+        <label for="admin-session-check" class="btn-admin-logout" title="Cerrar Sesión">&#10006; Cerrar Sesión</label>
       </div>
     </div>
   </div>
@@ -33,7 +44,8 @@
     <div class="container top-legal-content">
       <span>Universidad de Medellín</span>
       <div class="top-legal-actions">
-        <a href="#admin-management-space" class="top-admin-badge">&#128274; Consola Administrativa</a>
+        <!-- ÚNICO BOTÓN DISPONIBLE PARA EL ACCESO DE ADMINISTRADOR -->
+        <a href="#admin-management-space" class="top-admin-badge">&#128274; CONSOLA ADMINISTRATIVA</a>
         <span class="legal-badge">Vigilada MinEducación</span>
       </div>
     </div>
@@ -65,7 +77,6 @@
           <li><a href="#galeria" class="nav-link">Galería</a></li>
           <li><a href="#directorio" class="nav-link">Equipo</a></li>
           <li><a href="#reservas" class="btn btn-accent nav-btn">Reservar Cupo</a></li>
-          <li><a href="#admin-management-space" class="btn btn-primary nav-btn-admin">&#128274; Admin</a></li>
         </ul>
       </nav>
     </div>
@@ -189,7 +200,7 @@
     </div>
   </section>
 
-  <!-- Sección Gimnasio (Lógica de Turnos y Aforo de 30 Personas) -->
+  <!-- Sección Gimnasio (Aforo de 30 Personas) -->
   <section id="gimnasio" class="section-py bg-dark text-white">
     <div class="container">
       <div class="grid-2-cols align-center">
@@ -306,7 +317,7 @@
     </div>
   </section>
 
-  <!-- Sección de Programación y Entrenamientos Reales -->
+  <!-- Sección de Programación y Horarios Oficiales -->
   <section id="entrenamientos" class="section-py bg-light">
     <div class="container">
       <div class="section-head text-center">
@@ -487,7 +498,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN GALERÍA MULTIMEDIA EN LA PÁGINA PRINCIPAL -->
+  <!-- Sección Galería Multimedia en la Página Principal -->
   <section id="galeria" class="section-py bg-white">
     <div class="container">
       <div class="section-head text-center">
@@ -684,7 +695,7 @@
 
             <div class="admin-access-teaser">
               <span>¿Eres parte del equipo administrativo?</span>
-              <a href="#admin-management-space" class="admin-link">&#128274; Entrada a la Consola Administrativa &rarr;</a>
+              <a href="#admin-management-space" class="admin-link">&#128274; CONSOLA ADMINISTRATIVA &rarr;</a>
             </div>
           </div>
         </div>
@@ -780,13 +791,12 @@
   </section>
 
   <!-- =========================================================================
-       APARTADO DEDICADO DE GESTIÓN, BBDD Y CRUD DE GALERÍA (PANTALLA COMPLETA)
-       No interfiere con el sitio principal y solo se desbloquea tras login
+       CONSOLA DE CONTROL Y GESTIÓN BBDD (PANTALLA AISLADA Y SEGURA)
        ========================================================================= -->
   <div id="admin-management-space" class="admin-isolated-screen">
     <div class="admin-isolated-container">
       
-      <!-- Barra Superior de Navegación del Panel -->
+      <!-- Barra Superior de la Consola -->
       <div class="admin-top-nav">
         <div class="admin-brand">
           <span class="brand-crest">UdeM</span>
@@ -796,34 +806,43 @@
           </div>
         </div>
         <div class="admin-nav-actions">
+          <a href="#admin-change-password-modal" class="btn btn-sm btn-outline-white">&#128273; Cambio de Clave</a>
           <a href="#" class="btn btn-sm btn-outline-white">&#8592; Volver a la Página Principal</a>
+          <!-- BOTÓN DE CERRAR SESIÓN DIRECTO DENTRO DEL PANEL -->
+          <label for="admin-session-check" class="btn btn-sm btn-danger-logout cursor-pointer">&#10006; Cerrar Sesión</label>
         </div>
       </div>
 
-      <!-- ESTADO 1: FORMULARIO DE ACCESO (Visible cuando NO se ha iniciado sesión) -->
+      <!-- ESTADO 1: FORMULARIO DE ACCESO (SIN CLAVE INICIAL EXPUESTA + VALIDACIÓN ESTRICTA) -->
       <div class="admin-gate-login">
         <div class="admin-login-card">
           <div class="login-badge-icon">&#128274;</div>
-          <h3>Iniciar Sesión como Administrador</h3>
-          <p class="login-subtext">Ingresa tus credenciales autorizadas para acceder a la gestión de bases de datos y multimedia.</p>
+          <h3>Iniciar Sesión en la Consola</h3>
+          <p class="login-subtext">Ingresa tus credenciales autorizadas del Grupo de Deportes para acceder al panel de control.</p>
           
-          <form class="portal-form" onsubmit="return false;">
+          <form class="portal-form admin-auth-form" onsubmit="return false;">
             <div class="form-group text-left">
-              <label>Correo Electrónico Institucional Autorizado</label>
-              <input type="email" placeholder="gramos261@soyudemedellin.edu.co" class="form-input" required>
-              <small class="field-hint">Autorizados: gramos261@, jcoral@, jgarciav@, mmontoya@, sdiaz881@</small>
+              <label for="admin_user_mail">Correo Institucional Autorizado *</label>
+              <input type="email" id="admin_user_mail" placeholder="usuario@udemedellin.edu.co" class="form-input auth-field" pattern="[a-zA-Z0-9._%+-]+@(udemedellin\.edu\.co|soyudemedellin\.edu\.co)" required>
             </div>
+            
             <div class="form-group text-left">
-              <label>Contraseña Maestra</label>
-              <input type="password" placeholder="••••••••••••" class="form-input" required>
-              <small class="field-hint">Clave inicial: <code>Udemedellin2026*</code></small>
+              <label for="admin_user_pass">Contraseña Personal / Maestra *</label>
+              <input type="password" id="admin_user_pass" placeholder="Ingresa tu contraseña" class="form-input auth-field" minlength="8" required>
             </div>
+
+            <!-- MENSAJE DE ADVERTENCIA PARA DATOS INCORRECTOS O VACÍOS -->
+            <div class="auth-error-notice">
+              <span class="error-icon">&#9888;</span> Usuario o contraseña incorrectos. Verifica que ambos campos estén diligenciados con tu cuenta institucional autorizada.
+            </div>
+
             <div class="admin-notice">
-              <strong>Control de Privilegios:</strong> Los permisos de asignación de roles están reservados exclusivamente para el usuario raíz <em>Gustavo Andrés Ramos Quinto</em>.
+              <strong>Seguridad Institucional:</strong> Acceso reservado exclusivamente para el personal designado por el Líder de Deportes y el SuperAdmin Root <em>Gustavo Andrés Ramos Quinto</em>.
             </div>
-            <!-- Botón que activa la sesión persistente en CSS Puro -->
-            <label for="admin-session-check" class="btn btn-primary btn-block text-center cursor-pointer">
-              Iniciar Sesión y Desbloquear Gestión &rarr;
+
+            <!-- Botón de autenticación que activa el panel -->
+            <label for="admin-session-check" class="btn btn-primary btn-block text-center cursor-pointer submit-auth-btn">
+              Iniciar Sesión y Desbloquear Consola &rarr;
             </label>
           </form>
         </div>
@@ -836,12 +855,14 @@
         <input type="radio" name="admin-dash-tab" id="tab-bbdd-gimnasio" checked class="dash-tab-radio">
         <input type="radio" name="admin-dash-tab" id="tab-bbdd-escenarios" class="dash-tab-radio">
         <input type="radio" name="admin-dash-tab" id="tab-bbdd-usuarios" class="dash-tab-radio">
+        <input type="radio" name="admin-dash-tab" id="tab-crud-horarios" class="dash-tab-radio">
         <input type="radio" name="admin-dash-tab" id="tab-crud-galeria" class="dash-tab-radio">
 
         <div class="dash-tab-bar">
           <label for="tab-bbdd-gimnasio" class="dash-tab-label">&#127947; BBDD Gimnasio</label>
           <label for="tab-bbdd-escenarios" class="dash-tab-label">&#9917; BBDD Escenarios</label>
           <label for="tab-bbdd-usuarios" class="dash-tab-label">&#128101; BBDD Usuarios</label>
+          <label for="tab-crud-horarios" class="dash-tab-label highlight-gold">&#128197; Gestión de Horarios</label>
           <label for="tab-crud-galeria" class="dash-tab-label highlight">&#128247; Gestión de Galería</label>
         </div>
 
@@ -852,7 +873,7 @@
             <div class="dash-view-header">
               <div>
                 <h3>Base de Datos: Reservas del Gimnasio</h3>
-                <p>Monitoreo en vivo de los turnos de 2 horas y aforo máximo regulado a 30 cupos.</p>
+                <p>Monitoreo en vivo de turnos de 2 horas y aforo máximo regulado a 30 cupos.</p>
               </div>
               <a href="https://docs.google.com/spreadsheets/d/16aguWRwOjrE1d99Hb1SYB-LvTi0D5G_U0v2hthtREyg/edit" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
                 Abrir en Google Sheets Oficial &nearr;
@@ -1028,7 +1049,107 @@
             </div>
           </div>
 
-          <!-- Pestaña 4: GESTIÓN DE ELEMENTOS MULTIMEDIA DE LA GALERÍA -->
+          <!-- Pestaña 4: GESTIÓN DE HORARIOS DE ENTRENAMIENTO (AÑADIR / MODIFICAR / ELIMINAR) -->
+          <div id="view-crud-horarios" class="dash-view-panel">
+            <div class="dash-view-header">
+              <div>
+                <h3>Gestión de Horarios de Entrenamiento Oficiales</h3>
+                <p>Administra la oferta semestral para actualizar en tiempo real las tablas de Deporte Formativo y Selecciones Representativas.</p>
+              </div>
+            </div>
+
+            <div class="grid-2-cols">
+              <!-- Formulario para Añadir Horario -->
+              <div class="crud-form-card">
+                <h4 class="crud-card-title">&#10133; Añadir / Asignar Horario</h4>
+                <form class="portal-form" onsubmit="return false;">
+                  <div class="form-group">
+                    <label>Disciplina Deportiva *</label>
+                    <input type="text" placeholder="Ej: Voleibol Arena / Tenis de Mesa" class="form-input" required>
+                  </div>
+
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label>Categoría / Tipo *</label>
+                      <select class="form-input" required>
+                        <option value="formativo">Deporte Formativo (Extracurricular)</option>
+                        <option value="representativo">Deporte Representativo (Selección)</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Escenario Asignado *</label>
+                      <input type="text" placeholder="Ej: Bloque 1 Coliseo / Bloque 21 Cancha" class="form-input" required>
+                    </div>
+                  </div>
+
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label>Jornadas y Horas *</label>
+                      <input type="text" placeholder="Ej: Lunes y Miércoles 4:00 PM - 6:00 PM" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Entrenador Responsable *</label>
+                      <input type="text" placeholder="Nombre completo del instructor" class="form-input" required>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block">Guardar y Publicar Horario</button>
+                </form>
+              </div>
+
+              <!-- Lista de Disciplinas Actuales -->
+              <div class="crud-list-card">
+                <h4 class="crud-card-title">&#9776; Disciplinas Programadas</h4>
+                <div class="crud-media-items-list">
+                  <div class="crud-media-row">
+                    <div class="crud-media-details">
+                      <strong>Fútbol Masculino (Selección)</strong>
+                      <span>L-M 6-10 PM, V 7-10 PM &bull; Prof. Gustavo Hincapié</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-media-details">
+                      <strong>Baloncesto Formativo</strong>
+                      <span>Martes y Miércoles 4-6 PM &bull; Coliseo Bloque 1</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-media-details">
+                      <strong>Karate-Do (Selección UdeM)</strong>
+                      <span>Lunes a Viernes 12-2 PM &bull; Prof. Jhon Calderón</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-media-details">
+                      <strong>Natación &amp; Hidroaeróbicos</strong>
+                      <span>Miércoles y Viernes 2-4 PM &bull; Complejo Bloque 2</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pestaña 5: GESTIÓN DE ELEMENTOS MULTIMEDIA DE LA GALERÍA -->
           <div id="view-crud-galeria" class="dash-view-panel">
             <div class="dash-view-header">
               <div>
@@ -1038,7 +1159,7 @@
             </div>
 
             <div class="grid-2-cols">
-              <!-- Formulario de Añadir / Subir Multimedia -->
+              <!-- Formulario de Añadir Multimedia -->
               <div class="crud-form-card">
                 <h4 class="crud-card-title">&#10133; Añadir Elemento a la Galería</h4>
                 <form class="portal-form" onsubmit="return false;">
@@ -1081,7 +1202,7 @@
                 </form>
               </div>
 
-              <!-- Lista de Elementos Actuales (Modificar / Eliminar) -->
+              <!-- Lista de Elementos Publicados -->
               <div class="crud-list-card">
                 <h4 class="crud-card-title">&#9776; Elementos Actualmente Publicados (6)</h4>
                 
@@ -1133,30 +1254,6 @@
                       <button class="btn-action-icon delete" title="Eliminar">&times;</button>
                     </div>
                   </div>
-
-                  <div class="crud-media-row">
-                    <div class="crud-thumb-mini thumb-artes"></div>
-                    <div class="crud-media-details">
-                      <strong>Exhibición de Artes Marciales</strong>
-                      <span>Video &bull; Taekwondo y Karate-Do</span>
-                    </div>
-                    <div class="crud-row-actions">
-                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
-                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
-                    </div>
-                  </div>
-
-                  <div class="crud-media-row">
-                    <div class="crud-thumb-mini thumb-padel"></div>
-                    <div class="crud-media-details">
-                      <strong>Canchas de Pádel UdeMedellín</strong>
-                      <span>Foto &bull; Instalaciones Modernas</span>
-                    </div>
-                    <div class="crud-row-actions">
-                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
-                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
-                    </div>
-                  </div>
                 </div>
 
               </div>
@@ -1170,11 +1267,39 @@
     </div>
   </div>
 
-  <!-- =========================================================================
-       MODALES Y VENTANAS INTERACTIVAS (BANDEJA DE CORREO Y VISORES MULTIMEDIA)
-       ========================================================================= -->
+  <!-- MODAL: CAMBIO OBLIGATORIO DE CONTRASEÑA EN PRIMER INGRESO -->
+  <div id="admin-change-password-modal" class="modal-overlay">
+    <div class="modal-box">
+      <a href="#admin-management-space" class="modal-close" aria-label="Cerrar">&times;</a>
+      <div class="modal-header">
+        <span class="modal-kicker">Seguridad de la Cuenta</span>
+        <h3 class="modal-title">Actualizar Contraseña de Administrador</h3>
+        <p class="modal-desc">Si es tu primer ingreso a la Consola o deseas renovar tu clave de acceso, define una nueva contraseña segura:</p>
+      </div>
 
-  <!-- Modal 1: Bandeja de Contacto con Opciones de Gmail y Outlook -->
+      <form class="portal-form" onsubmit="return false;">
+        <div class="form-group">
+          <label>Contraseña Actual / Inicial *</label>
+          <input type="password" placeholder="••••••••••••" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nueva Contraseña Personal *</label>
+          <input type="password" placeholder="Mínimo 8 caracteres alfanuméricos" minlength="8" class="form-input" required>
+          <small class="field-hint">Incluye letras mayúsculas, minúsculas, números y un símbolo (@$!%*).</small>
+        </div>
+
+        <div class="form-group">
+          <label>Confirmar Nueva Contraseña *</label>
+          <input type="password" placeholder="Repite la nueva contraseña" minlength="8" class="form-input" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Guardar Nueva Contraseña</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: BANDEJA DE CONTACTO CON GMAIL Y OUTLOOK -->
   <div id="contact-modal" class="modal-overlay">
     <div class="modal-box">
       <a href="#directorio" class="modal-close" aria-label="Cerrar Ventana">&times;</a>
@@ -1184,7 +1309,6 @@
         <p class="modal-desc">Elige tu gestor de correo predeterminado para escribir a la Coordinación del Grupo de Deportes:</p>
       </div>
 
-      <!-- Destinatarios Oficiales -->
       <div class="contact-recipients-box">
         <span class="recipients-label">Destinatarios incluidos:</span>
         <ul class="recipients-list">
@@ -1194,7 +1318,6 @@
         </ul>
       </div>
 
-      <!-- Opciones de Envío Directo a Gmail o Outlook -->
       <div class="mail-clients-grid">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jcoral@udemedellin.edu.co,jgarciav@udemedellin.edu.co,mmontoya@udemedellin.edu.co&su=Consulta%20Grupo%20de%20Deportes%20UdeMedellin" target="_blank" rel="noopener" class="mail-client-btn btn-gmail">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
@@ -1223,7 +1346,7 @@
     </div>
   </div>
 
-  <!-- Visores de la Galería Multimedia en Pantalla Completa (Lightboxes CSS Puro) -->
+  <!-- VISORES LIGHTBOX DE LA GALERÍA MULTIMEDIA -->
   <div id="media-view-1" class="modal-overlay lightbox-overlay">
     <div class="lightbox-box">
       <a href="#galeria" class="lightbox-close">&times;</a>
@@ -1263,46 +1386,7 @@
     </div>
   </div>
 
-  <div id="media-view-4" class="modal-overlay lightbox-overlay">
-    <div class="lightbox-box">
-      <a href="#galeria" class="lightbox-close">&times;</a>
-      <div class="lightbox-media media-preview-pool"></div>
-      <div class="lightbox-caption">
-        <h3>Complejo Acuático Semiolímpico (Bloque 2)</h3>
-        <p>Entrenamientos diarios de natación carreras, semilleros infantiles y clases guiadas de hidroaeróbicos.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="media-view-5" class="modal-overlay lightbox-overlay">
-    <div class="lightbox-box">
-      <a href="#galeria" class="lightbox-close">&times;</a>
-      <div class="lightbox-video-container">
-        <div class="video-placeholder-frame">
-          <span class="video-symbol">&#9658;</span>
-          <p>Reproductor de Video: Exhibición de Combate Taekwondo y Karate-Do</p>
-          <small>Resolución 1080p Full HD</small>
-        </div>
-      </div>
-      <div class="lightbox-caption">
-        <h3>Exhibición de Artes Marciales en Coliseo</h3>
-        <p>Demostración técnica de las selecciones de Taekwondo y Karate-Do de la Universidad de Medellín.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="media-view-6" class="modal-overlay lightbox-overlay">
-    <div class="lightbox-box">
-      <a href="#galeria" class="lightbox-close">&times;</a>
-      <div class="lightbox-media media-preview-padel"></div>
-      <div class="lightbox-caption">
-        <h3>Canchas de Pádel y Tenis (Zona Deportiva)</h3>
-        <p>Instalaciones de primer nivel para la práctica recreativa y torneos de pádel universitarios.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- BOTÓN FLOTANTE DE INSTAGRAM (SOLO LOGO, PEQUEÑO Y MINIMALISTA) -->
+  <!-- BOTÓN FLOTANTE MINIMALISTA DE INSTAGRAM -->
   <a href="https://instagram.com/deportesudemedellin" target="_blank" rel="noopener noreferrer" class="floating-instagram-button" title="Instagram @deportesudemedellin" aria-label="Seguir en Instagram a @deportesudemedellin">
     <svg class="ig-float-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -1311,7 +1395,6 @@
 
   <!-- Pie de Página Institucional -->
   <footer class="main-footer">
-    <!-- Frase Motivacional Deportiva Corta -->
     <div class="footer-quote-strip">
       <div class="container text-center">
         <blockquote class="motivational-quote">
@@ -1353,7 +1436,7 @@
             <li><a href="https://docs.google.com/spreadsheets/d/16aguWRwOjrE1d99Hb1SYB-LvTi0D5G_U0v2hthtREyg/edit" target="_blank" rel="noopener">BBDD GIMNASIO</a></li>
             <li><a href="https://docs.google.com/spreadsheets/d/1bGwn3sFFe5rzsr0B9tda2XrL3O_YjQmBjdAhP1Y_cw8/edit" target="_blank" rel="noopener">BBDD ESCENARIOS</a></li>
             <li><a href="https://docs.google.com/spreadsheets/d/1saCE7IoIG0LLADoU7lc1irlg_e647Asdzj4uo3P7B4g/edit" target="_blank" rel="noopener">BBDD USUARIOS</a></li>
-            <li><a href="#admin-management-space">Consola de Control</a></li>
+            <li><a href="#admin-management-space">Consola Administrativa</a></li>
           </ul>
         </div>
 
