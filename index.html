@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupo de Deportes | Universidad de Medellín</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CONTROLADOR MAESTRO DE SESIÓN ADMIN EN CSS PURO -->
+  <input type="checkbox" id="admin-session-check" class="admin-session-toggle">
+
+  <!-- BARRA FLOTANTE DE SESIÓN ADMINISTRADOR ACTIVA (Se muestra al iniciar sesión) -->
+  <div class="admin-session-banner">
+    <div class="container admin-banner-content">
+      <div class="admin-status-indicator">
+        <span class="status-dot-admin"></span>
+        <span><strong>Sesión de Administrador Activa:</strong> Gustavo Andrés Ramos Quinto (SuperAdmin Root)</span>
+      </div>
+      <div class="admin-banner-actions">
+        <a href="#admin-management-space" class="btn-admin-action">&#9881; Ir al Panel de BBDD &amp; Gestión</a>
+        <label for="admin-session-check" class="btn-admin-logout" title="Cerrar Sesión">&#10006; Salir de Admin</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cintillo Legal Institucional -->
+  <aside class="top-legal-bar">
+    <div class="container top-legal-content">
+      <span>Universidad de Medellín</span>
+      <div class="top-legal-actions">
+        <a href="#admin-management-space" class="top-admin-badge">&#128274; Consola Administrativa</a>
+        <span class="legal-badge">Vigilada MinEducación</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navegación Principal -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand">
+        <span class="brand-crest">UdeM</span>
+        <div class="brand-text">
+          <span class="brand-title">DEPORTES</span>
+          <span class="brand-sub">Universidad de Medellín</span>
+        </div>
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-check">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#escenarios" class="nav-link">Escenarios</a></li>
+          <li><a href="#gimnasio" class="nav-link">Gimnasio</a></li>
+          <li><a href="#entrenamientos" class="nav-link">Entrenamientos</a></li>
+          <li><a href="#galeria" class="nav-link">Galería</a></li>
+          <li><a href="#directorio" class="nav-link">Equipo</a></li>
+          <li><a href="#reservas" class="btn btn-accent nav-btn">Reservar Cupo</a></li>
+          <li><a href="#admin-management-space" class="btn btn-primary nav-btn-admin">&#128274; Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section Impactante -->
+  <section id="hero" class="hero-section">
+    <div class="hero-backdrop"></div>
+    <div class="hero-pattern"></div>
+    <div class="container hero-content">
+      <span class="hero-tag">Ciencia y Libertad en Movimiento</span>
+      <h1 class="hero-title">Pasión, Disciplina <br>&amp; Excelencia Deportiva</h1>
+      <p class="hero-description">
+        Portal oficial del Grupo de Deportes de la Universidad de Medellín. Gestiona tus reservas en escenarios deportivos, asegura tu turno en el gimnasio y consulta los horarios de selecciones representativas y deporte formativo.
+      </p>
+      <div class="hero-actions">
+        <a href="#reservas" class="btn btn-primary btn-lg">Reservar Escenario</a>
+        <a href="#gimnasio" class="btn btn-outline btn-lg">Turnos Gimnasio</a>
+        <a href="#contact-modal" class="btn btn-secondary btn-lg">&#9993; Contactar Coordinación</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric-card">
+          <span class="metric-num">30</span>
+          <span class="metric-label">Aforo máx. Gimnasio</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">60m</span>
+          <span class="metric-label">Bloques Escenarios</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">16+</span>
+          <span class="metric-label">Disciplinas ASCUN</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">100%</span>
+          <span class="metric-label">Campus Vivo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Escenarios Deportivos -->
+  <section id="escenarios" class="section-py bg-light">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-kicker">Instalaciones de Primer Nivel</span>
+        <h2 class="section-title">Nuestros Escenarios Deportivos</h2>
+        <div class="separator-line"></div>
+        <p class="section-subtitle">Espacios diseñados para el alto rendimiento y la recreación de la comunidad universitaria y externa.</p>
+      </div>
+
+      <div class="grid-cards-4">
+        <!-- Cancha de Fútbol -->
+        <article class="scenario-card">
+          <div class="card-media media-soccer">
+            <span class="card-badge">Bloque 21</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Cancha Sintética de Fútbol 11</h3>
+            <p class="card-text">Grama sintética con iluminación nocturna reglamentaria para partidos y alquiler con bloqueo preventivo de 90 min para soporte de pago.</p>
+            <ul class="spec-list">
+              <li><strong>Franjas:</strong> Bloques de 60 minutos</li>
+              <li><strong>Comunidad:</strong> 6AM - 6PM ($0 COP)</li>
+              <li><strong>Nocturno:</strong> 6PM - 10PM (Tarifa inst.)</li>
+            </ul>
+            <a href="#reservas" class="card-cta">Consultar Disponibilidad &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Coliseo Polideportivo -->
+        <article class="scenario-card">
+          <div class="card-media media-coliseo">
+            <span class="card-badge">Bloque 1</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Coliseo Polideportivo Cubierto</h3>
+            <p class="card-text">Escenario multifuncional de maderamen para Baloncesto, Voleibol, Fútbol Sala y eventos de gran escala.</p>
+            <ul class="spec-list">
+              <li><strong>Aforo:</strong> Graderías habilitadas</li>
+              <li><strong>Supervisión:</strong> jcoral@udemedellin.edu.co</li>
+              <li><strong>Uso:</strong> Selecciones y Formativo</li>
+            </ul>
+            <a href="#reservas" class="card-cta">Consultar Disponibilidad &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Complejo Acuático -->
+        <article class="scenario-card">
+          <div class="card-media media-pool">
+            <span class="card-badge">Bloque 2</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Complejo Acuático &amp; Piscina</h3>
+            <p class="card-text">Piscina semiolímpica para natación formativa, entrenamientos de carreras representativas e hidroaeróbicos.</p>
+            <ul class="spec-list">
+              <li><strong>Modalidad:</strong> Libre y Guiada</li>
+              <li><strong>Requisito:</strong> Gorro reglamentario</li>
+              <li><strong>Horario:</strong> Lunes a Viernes</li>
+            </ul>
+            <a href="#reservas" class="card-cta">Consultar Disponibilidad &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Canchas de Pádel y Tenis -->
+        <article class="scenario-card">
+          <div class="card-media media-racket">
+            <span class="card-badge">Zona Deportiva</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Canchas de Pádel &amp; Tenis</h3>
+            <p class="card-text">Superficies rápidas y canchas de pádel panorámicas para torneos internos, clases y práctica libre.</p>
+            <ul class="spec-list">
+              <li><strong>Canchas:</strong> Tenis #1, #2 y Pádel</li>
+              <li><strong>Franjas:</strong> Bloques de 60 minutos</li>
+              <li><strong>Acceso:</strong> Toda la comunidad</li>
+            </ul>
+            <a href="#reservas" class="card-cta">Consultar Disponibilidad &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Gimnasio (Lógica de Turnos y Aforo de 30 Personas) -->
+  <section id="gimnasio" class="section-py bg-dark text-white">
+    <div class="container">
+      <div class="grid-2-cols align-center">
+        <div class="gym-info-col">
+          <span class="hero-tag text-accent">Control Bioseguro de Aforo</span>
+          <h2 class="section-title text-white">Centro de Acondicionamiento &amp; Gimnasio</h2>
+          <p class="gym-lead">
+            Capacidad regulada a <strong>30 usuarios por turno de 2 horas</strong>. Mantenemos el estándar institucional de higiene y reserva anticipada para garantizar tu entrenamiento.
+          </p>
+
+          <div class="gym-rules-box">
+            <div class="rule-item">
+              <span class="rule-icon">&#10003;</span>
+              <div>
+                <h4>Lunes a Viernes: Turnos de 2 Horas</h4>
+                <p>De 6:00 AM a 8:00 PM. Reservas habilitadas únicamente para el mismo día o con 1 día de anticipación.</p>
+              </div>
+            </div>
+
+            <div class="rule-item warning">
+              <span class="rule-icon">&#9888;</span>
+              <div>
+                <h4>Ventana de Aseo Diario (9:30 AM - 10:00 AM)</h4>
+                <p>Gimnasio cerrado al público por protocolo de desinfección. Ningún turno se habilita durante este lapso.</p>
+              </div>
+            </div>
+
+            <div class="rule-item">
+              <span class="rule-icon">&#9432;</span>
+              <div>
+                <h4>Sábados (8:00 AM - 2:00 PM): Acceso Libre</h4>
+                <p>Turnos de 2 horas sin reserva web previa. Ingreso por orden de llegada hasta completar el aforo de 30 personas.</p>
+              </div>
+            </div>
+
+            <div class="rule-item danger">
+              <span class="rule-icon">&times;</span>
+              <div>
+                <h4>Domingos y Festivos</h4>
+                <p>Instalaciones cerradas sin servicio.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-banner-gym">
+            <p><strong>Notificaciones directas:</strong> <code>reservas_gimnasio@udemedellin.edu.co</code></p>
+          </div>
+        </div>
+
+        <!-- Panel Interactivo de Turnos Diarios -->
+        <div class="gym-slots-col">
+          <div class="slots-panel">
+            <div class="slots-header">
+              <h3 class="slots-title">Turnos Lunes a Viernes</h3>
+              <span class="live-pill"><span class="dot-blink"></span> En Vivo</span>
+            </div>
+
+            <div class="slots-grid">
+              <div class="slot-tile slot-free">
+                <span class="slot-time">06:00 AM - 08:00 AM</span>
+                <span class="slot-status">Disponible</span>
+                <span class="slot-capacity">Aforo: 18/30</span>
+              </div>
+
+              <div class="slot-tile slot-special">
+                <span class="slot-time">08:00 AM - 09:30 AM</span>
+                <span class="slot-status">Turno Reducido</span>
+                <span class="slot-capacity">Aforo: 24/30</span>
+              </div>
+
+              <div class="slot-tile slot-closed">
+                <span class="slot-time">09:30 AM - 10:00 AM</span>
+                <span class="slot-status">Cerrado por Aseo</span>
+                <span class="slot-capacity">Mantenimiento</span>
+              </div>
+
+              <div class="slot-tile slot-free">
+                <span class="slot-time">10:00 AM - 12:00 M</span>
+                <span class="slot-status">Disponible</span>
+                <span class="slot-capacity">Aforo: 12/30</span>
+              </div>
+
+              <div class="slot-tile slot-free">
+                <span class="slot-time">12:00 M - 02:00 PM</span>
+                <span class="slot-status">Disponible</span>
+                <span class="slot-capacity">Aforo: 20/30</span>
+              </div>
+
+              <div class="slot-tile slot-full">
+                <span class="slot-time">02:00 PM - 04:00 PM</span>
+                <span class="slot-status">Turno Lleno</span>
+                <span class="slot-capacity">Aforo: 30/30</span>
+              </div>
+
+              <div class="slot-tile slot-free">
+                <span class="slot-time">04:00 PM - 06:00 PM</span>
+                <span class="slot-status">Disponible</span>
+                <span class="slot-capacity">Aforo: 27/30</span>
+              </div>
+
+              <div class="slot-tile slot-free">
+                <span class="slot-time">06:00 PM - 08:00 PM</span>
+                <span class="slot-status">Disponible</span>
+                <span class="slot-capacity">Aforo: 22/30</span>
+              </div>
+            </div>
+
+            <div class="slots-footer">
+              <a href="#reservas" class="btn btn-primary btn-block">Iniciar Sesión para Reservar Cupo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Programación y Entrenamientos Reales -->
+  <section id="entrenamientos" class="section-py bg-light">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-kicker">Oferta Académica &amp; Deportiva</span>
+        <h2 class="section-title">Horarios de Entrenamiento Oficiales</h2>
+        <div class="separator-line"></div>
+        <p class="section-subtitle">Programación semestral de deportes extracurriculares formativos y delegaciones de alta competencia representativa.</p>
+      </div>
+
+      <!-- Selector por Tabs CSS Puro -->
+      <div class="css-tabs-container">
+        <input type="radio" name="tab-group" id="tab-formativo" checked class="tab-radio">
+        <input type="radio" name="tab-group" id="tab-representativo" class="tab-radio">
+
+        <div class="tab-triggers">
+          <label for="tab-formativo" class="tab-label">Deporte Formativo (Extracurriculares)</label>
+          <label for="tab-representativo" class="tab-label">Deporte Representativo (Selecciones)</label>
+        </div>
+
+        <div class="tab-panels">
+          <!-- Panel Formativo -->
+          <div class="tab-panel" id="panel-formativo">
+            <div class="table-responsive">
+              <table class="schedule-table">
+                <thead>
+                  <tr>
+                    <th>Disciplina</th>
+                    <th>Días y Horarios</th>
+                    <th>Lugar / Escenario</th>
+                    <th>Entrenador Responsable</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Acondicionamiento Físico</strong></td>
+                    <td>Miércoles 8:00 AM - 2:00 PM<br>Jueves 12:00 M - 2:00 PM</td>
+                    <td>Bloque 1 Coliseo (Salón 2do Piso)</td>
+                    <td>Juan David Gómez Gaviria</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ajedrez</strong></td>
+                    <td>Lunes 12:00 M - 2:00 PM</td>
+                    <td>Bloque 21 Salón de Ajedrez</td>
+                    <td>Andrés Felipe Truco Acevedo</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Baloncesto</strong></td>
+                    <td>Martes y Miércoles 4:00 PM - 6:00 PM</td>
+                    <td>Bloque 1 Coliseo Polideportivo</td>
+                    <td>Equipo Técnico UdeM</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Defensa Personal</strong></td>
+                    <td>Martes 2:00 PM - 4:00 PM</td>
+                    <td>Bloque 1 Salón de Artes Marciales</td>
+                    <td>Jhon Wilfer Calderón Arango</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Fútbol Formativo</strong></td>
+                    <td>Lunes 8:00 AM - 12:00 M<br>Martes 8:00 AM - 10:00 AM</td>
+                    <td>Bloque 21 Cancha Sintética</td>
+                    <td>Jorge Enrique Fernández Duarte</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Fútbol Sala</strong></td>
+                    <td>Lunes a Miércoles 2:00 PM - 4:00 PM</td>
+                    <td>Bloque 1 Coliseo / Placa Bloque 21</td>
+                    <td>Daniel Fernando Bolívar Díaz</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Natación &amp; Hidroaeróbicos</strong></td>
+                    <td>Miércoles y Viernes 2:00 PM - 4:00 PM<br>Jueves 10:00 AM - 12:00 M</td>
+                    <td>Bloque 2 Complejo Acuático</td>
+                    <td>Andrés Felipe Ochoa Molina</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Indoor Cycling</strong></td>
+                    <td>Jueves 10:00 AM - 12:00 M</td>
+                    <td>Bloque 1 Salón Spinning</td>
+                    <td>Juan David Gómez Gaviria</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tenis de Campo</strong></td>
+                    <td>Martes, Jueves 10:00 AM - 12:00 M<br>Miércoles 8:00 AM - 2:00 PM</td>
+                    <td>Bloque 21 Canchas #1 y #2</td>
+                    <td>Julián Loaiza Arias</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Voleibol</strong></td>
+                    <td>Lunes y Miércoles 8:00 AM - 12:00 M</td>
+                    <td>Bloque 1 Coliseo y Placa Polideportiva</td>
+                    <td>Luis Alexander Meneses Chaverra</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Panel Representativo -->
+          <div class="tab-panel" id="panel-representativo">
+            <div class="table-responsive">
+              <table class="schedule-table">
+                <thead>
+                  <tr>
+                    <th>Selección UdeM</th>
+                    <th>Jornadas de Entrenamiento</th>
+                    <th>Escenario Asignado</th>
+                    <th>Director Técnico</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Fútbol Masculino</strong></td>
+                    <td>Lunes y Miércoles 6:00 PM - 10:00 PM<br>Viernes 7:00 PM - 10:00 PM</td>
+                    <td>Bloque 21 Cancha Sintética</td>
+                    <td>Gustavo Adolfo Hincapié Atehortúa</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Fútbol Femenino</strong></td>
+                    <td>Lunes 5:00 PM, Miércoles 6:00 PM<br>Jueves 4:00 PM, Sábados 4:00 PM</td>
+                    <td>Bloque 21 Sintética y Grama</td>
+                    <td>Juan Esteban Giraldo Mesa</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Baloncesto Masculino</strong></td>
+                    <td>Martes, Jueves y Viernes 6:30 AM - 8:00 AM<br>Sub-18/21: 8:00 AM - 10:00 AM</td>
+                    <td>Bloque 1 Coliseo Polideportivo</td>
+                    <td>Jorge Enrique Morales</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Baloncesto Femenino</strong></td>
+                    <td>Martes y Jueves 6:00 PM - 8:00 PM<br>Sábados 6:00 AM - 8:00 AM</td>
+                    <td>Bloque 1 Coliseo Polideportivo</td>
+                    <td>Jenifer Alexandra Muñoz David</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Disco Volador (Ultimate)</strong></td>
+                    <td>Jueves 7:30 PM - 10:00 PM (Sintética)<br>Sábado 11:00 AM - 2:00 PM (Grama)</td>
+                    <td>Zona Deportiva Bloque 21</td>
+                    <td>Eliana Patricia Pérez Álvarez</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Karate-Do</strong></td>
+                    <td>Lunes a Viernes 12:00 M - 2:00 PM</td>
+                    <td>Bloque 1 Salón Artes Marciales</td>
+                    <td>Jhon Wilfer Calderón Arango</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Natación Carreras</strong></td>
+                    <td>Martes y Viernes 10:00 AM - 12:00 M</td>
+                    <td>Bloque 2 Complejo Acuático</td>
+                    <td>Juan David Gómez Gaviria</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Taekwondo</strong></td>
+                    <td>Lunes a Miércoles y Viernes 4:00 PM - 6:00 PM<br>Jueves 2:00 PM - 4:00 PM</td>
+                    <td>Bloque 1 Salón Artes Marciales</td>
+                    <td>Nelson Augusto Posada Cortés</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Voleibol Masculino</strong></td>
+                    <td>Lunes 10:00 AM - 12:00 M (Horarios ASCUN)</td>
+                    <td>Bloque 1 Coliseo Polideportivo</td>
+                    <td>Juan David Urán Salazar</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Voleibol Femenino</strong></td>
+                    <td>Lunes 10:00 AM - 12:00 M (Horarios ASCUN)</td>
+                    <td>Bloque 1 Coliseo Polideportivo</td>
+                    <td>Daniel Felipe Arrubla Gutiérrez</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN GALERÍA MULTIMEDIA EN LA PÁGINA PRINCIPAL -->
+  <section id="galeria" class="section-py bg-white">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-kicker">Comunidad &amp; Vida Universitaria</span>
+        <h2 class="section-title">Galería Multimedia Deportiva</h2>
+        <div class="separator-line"></div>
+        <p class="section-subtitle">Revive los mejores momentos de los Juegos Universitarios ASCUN, torneos internos y entrenamientos en nuestro campus.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Elemento 1: Foto Canchas -->
+        <a href="#media-view-1" class="gallery-item">
+          <div class="gallery-thumb thumb-canchas">
+            <span class="media-type-badge">&#128247; Foto</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>Cancha Sintética Bloque 21</h4>
+            <p>Jornada nocturna de entrenamientos de selecciones representativas.</p>
+          </div>
+        </a>
+
+        <!-- Elemento 2: Foto Coliseo -->
+        <a href="#media-view-2" class="gallery-item">
+          <div class="gallery-thumb thumb-coliseo">
+            <span class="media-type-badge">&#128247; Foto</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>Coliseo Polideportivo</h4>
+            <p>Encuentro final de voleibol interfacultades.</p>
+          </div>
+        </a>
+
+        <!-- Elemento 3: Video Gimnasio -->
+        <a href="#media-view-3" class="gallery-item item-video">
+          <div class="gallery-thumb thumb-gym">
+            <span class="media-type-badge video-badge">&#9658; Video</span>
+            <div class="play-overlay">&#9658;</div>
+          </div>
+          <div class="gallery-caption">
+            <h4>Rutinas Dirigidas en el Gimnasio</h4>
+            <p>Acondicionamiento físico para estudiantes y docentes.</p>
+          </div>
+        </a>
+
+        <!-- Elemento 4: Foto Complejo Acuático -->
+        <a href="#media-view-4" class="gallery-item">
+          <div class="gallery-thumb thumb-pool">
+            <span class="media-type-badge">&#128247; Foto</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>Complejo Acuático Bloque 2</h4>
+            <p>Sesiones matutinas de natación y acondicionamiento.</p>
+          </div>
+        </a>
+
+        <!-- Elemento 5: Video Taekwondo -->
+        <a href="#media-view-5" class="gallery-item item-video">
+          <div class="gallery-thumb thumb-artes">
+            <span class="media-type-badge video-badge">&#9658; Video</span>
+            <div class="play-overlay">&#9658;</div>
+          </div>
+          <div class="gallery-caption">
+            <h4>Exhibición de Artes Marciales</h4>
+            <p>Torneo regional de Taekwondo y Karate-Do.</p>
+          </div>
+        </a>
+
+        <!-- Elemento 6: Foto Pádel -->
+        <a href="#media-view-6" class="gallery-item">
+          <div class="gallery-thumb thumb-padel">
+            <span class="media-type-badge">&#128247; Foto</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>Canchas de Pádel UdeMedellín</h4>
+            <p>Espacios modernos para la práctica universitaria.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Módulo de Reserva y Portal de Usuario -->
+  <section id="reservas" class="section-py bg-light">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-kicker">Autenticación &amp; Reservas</span>
+        <h2 class="section-title">Gestión de Solicitudes y Alquileres</h2>
+        <div class="separator-line"></div>
+        <p class="section-subtitle">Para agendar un bloque de escenario o cupo de gimnasio, valida tus credenciales de usuario.</p>
+      </div>
+
+      <div class="booking-portal-card">
+        <div class="portal-grid">
+          <!-- Columna Izquierda: Formulario de Usuario -->
+          <div class="portal-form-col">
+            <h3 class="portal-col-title">Portal de Usuario</h3>
+            <form class="portal-form" onsubmit="return false;">
+              <div class="form-group">
+                <label for="correo_inst">Correo Electrónico *</label>
+                <input type="email" id="correo_inst" placeholder="ejemplo@udemedellin.edu.co" class="form-input" required>
+                <small class="field-hint">Usa tu cuenta institucional (@udemedellin.edu.co) para tarifa $0 en jornada diurna.</small>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="nombre_user">Nombre Completo *</label>
+                  <input type="text" id="nombre_user" placeholder="Nombre y Apellidos" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="doc_user">Número de Documento *</label>
+                  <input type="number" id="doc_user" placeholder="Cédula o T.I." class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="tel_user">Número de Contacto *</label>
+                  <input type="tel" id="tel_user" placeholder="300 000 0000" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label for="tipo_user">Tipo de Usuario *</label>
+                  <select id="tipo_user" class="form-input" required>
+                    <option value="">Selecciona tu estamento...</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="docente">Docente</option>
+                    <option value="egresado">Egresado</option>
+                    <option value="administrativo">Personal Administrativo</option>
+                    <option value="externo">Público Externo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="escenario_select">Espacio Requerido *</label>
+                <select id="escenario_select" class="form-input" required>
+                  <option value="">Seleccionar escenario...</option>
+                  <option value="gimnasio">Gimnasio (Turnos de 2 Horas - Aforo 30)</option>
+                  <option value="futbol">Cancha Sintética de Fútbol 11 (60 Min)</option>
+                  <option value="coliseo">Coliseo Polideportivo (60 Min)</option>
+                  <option value="padel">Canchas de Pádel / Tenis (60 Min)</option>
+                  <option value="piscina">Piscina Complejo Acuático</option>
+                </select>
+              </div>
+
+              <!-- Habeas Data Obligatorio -->
+              <div class="habeas-data-box">
+                <label class="checkbox-container">
+                  <input type="checkbox" required>
+                  <span class="checkmark"></span>
+                  <span class="checkbox-label">
+                    Autorizo expresamente al Grupo de Deportes de la Universidad de Medellín para realizar el tratamiento de mis datos personales aquí consignados, con la única finalidad de gestionar las solicitudes de reserva, control de aforo, auditoría interna e información de eventos deportivos, de conformidad con la Política de Tratamiento de Datos Personales de la institución.
+                  </span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Confirmar y Enviar Solicitud</button>
+            </form>
+          </div>
+
+          <!-- Columna Derecha: Políticas del Sistema -->
+          <div class="portal-info-col">
+            <h3 class="portal-col-title">Políticas Operativas</h3>
+            <div class="policy-card">
+              <span class="policy-icon">&#128337;</span>
+              <div>
+                <h4>Política de Cancelación (24 Horas)</h4>
+                <p>Las reservas de escenarios pueden cancelarse sin penalidad desde el panel de usuario con al menos 24 horas de antelación.</p>
+              </div>
+            </div>
+
+            <div class="policy-card">
+              <span class="policy-icon">&#128179;</span>
+              <div>
+                <h4>Ventana de Pago (90 Minutos)</h4>
+                <p>En alquileres con costo, el espacio se reserva temporalmente por 90 minutos para adjuntar el comprobante en formato JPG (máx. 500 KB).</p>
+              </div>
+            </div>
+
+            <div class="policy-card">
+              <span class="policy-icon">&#128269;</span>
+              <div>
+                <h4>Auditoría de Pagos (15 Minutos)</h4>
+                <p>Una vez anexado el comprobante, el equipo administrativo valida la transacción en un periodo estimado de 15 minutos.</p>
+              </div>
+            </div>
+
+            <div class="policy-card">
+              <span class="policy-icon">&#128197;</span>
+              <div>
+                <h4>Gimnasio: Mismo Día o Mañana</h4>
+                <p>Para evitar acaparamientos, los cupos del gimnasio se reservan exclusivamente el mismo día o con un día de anticipación.</p>
+              </div>
+            </div>
+
+            <div class="admin-access-teaser">
+              <span>¿Eres parte del equipo administrativo?</span>
+              <a href="#admin-management-space" class="admin-link">&#128274; Entrada a la Consola Administrativa &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directorio del Equipo Humano -->
+  <section id="directorio" class="section-py bg-white">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-kicker">Talento Humano Institucional</span>
+        <h2 class="section-title">Equipo de Coordinación y Comunicaciones</h2>
+        <div class="separator-line"></div>
+        <p class="section-subtitle">Profesionales dedicados a la gestión, apoyo logístico y difusión del deporte universitario.</p>
+      </div>
+
+      <div class="grid-cards-3">
+        <!-- Jaime Coral -->
+        <article class="staff-card">
+          <div class="staff-avatar-placeholder">JC</div>
+          <div class="staff-body">
+            <span class="staff-role">Líder de Deportes</span>
+            <h3 class="staff-name">Jaime Coral Ibarra</h3>
+            <p class="staff-dept">Dirección Estratégica &amp; Coliseo</p>
+            <a href="mailto:jcoral@udemedellin.edu.co" class="staff-email">jcoral@udemedellin.edu.co</a>
+          </div>
+        </article>
+
+        <!-- Jorge García -->
+        <article class="staff-card">
+          <div class="staff-avatar-placeholder">JG</div>
+          <div class="staff-body">
+            <span class="staff-role">Auxiliar de Deportes</span>
+            <h3 class="staff-name">Jorge García Viloria</h3>
+            <p class="staff-dept">Escenarios Deportivos &amp; Logística</p>
+            <a href="mailto:jgarciav@udemedellin.edu.co" class="staff-email">jgarciav@udemedellin.edu.co</a>
+          </div>
+        </article>
+
+        <!-- Manuela Montoya -->
+        <article class="staff-card">
+          <div class="staff-avatar-placeholder">MM</div>
+          <div class="staff-body">
+            <span class="staff-role">Auxiliar de Deportes</span>
+            <h3 class="staff-name">Manuela Montoya Vásquez</h3>
+            <p class="staff-dept">Escuelas de Formación &amp; Atención</p>
+            <a href="mailto:mmontoya@udemedellin.edu.co" class="staff-email">mmontoya@udemedellin.edu.co</a>
+          </div>
+        </article>
+
+        <!-- Gustavo Ramos -->
+        <article class="staff-card staff-highlight">
+          <div class="staff-avatar-placeholder highlight">GR</div>
+          <div class="staff-body">
+            <span class="staff-role">Comunicaciones &amp; Medios</span>
+            <h3 class="staff-name">Gustavo Andrés Ramos Quinto</h3>
+            <p class="staff-dept">Administrador del Portal &amp; Prensa Deportiva</p>
+            <a href="mailto:gramos261@soyudemedellin.edu.co" class="staff-email">gramos261@soyudemedellin.edu.co</a>
+          </div>
+        </article>
+
+        <!-- Sara Díaz -->
+        <article class="staff-card">
+          <div class="staff-avatar-placeholder">SD</div>
+          <div class="staff-body">
+            <span class="staff-role">Comunicaciones</span>
+            <h3 class="staff-name">Sara Sofía Díaz Romero</h3>
+            <p class="staff-dept">Cobertura &amp; Difusión de Eventos</p>
+            <a href="mailto:sdiaz881@soyudemedellin.edu.co" class="staff-email">sdiaz881@soyudemedellin.edu.co</a>
+          </div>
+        </article>
+
+        <!-- Soporte Técnico de Escenarios -->
+        <article class="staff-card">
+          <div class="staff-avatar-placeholder">GD</div>
+          <div class="staff-body">
+            <span class="staff-role">Mesa de Reservas</span>
+            <h3 class="staff-name">Gimnasio &amp; Mantenimiento</h3>
+            <p class="staff-dept">Gestión de Aforos y Turnos</p>
+            <a href="mailto:reservas_gimnasio@udemedellin.edu.co" class="staff-email">reservas_gimnasio@udemedellin.edu.co</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Barra de Contacto -->
+      <div class="text-center contact-cta-container">
+        <a href="#contact-modal" class="btn btn-primary btn-lg contact-master-btn">
+          <span class="btn-icon">&#9993;</span> Bandeja de Contacto con Coordinación
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       APARTADO DEDICADO DE GESTIÓN, BBDD Y CRUD DE GALERÍA (PANTALLA COMPLETA)
+       No interfiere con el sitio principal y solo se desbloquea tras login
+       ========================================================================= -->
+  <div id="admin-management-space" class="admin-isolated-screen">
+    <div class="admin-isolated-container">
+      
+      <!-- Barra Superior de Navegación del Panel -->
+      <div class="admin-top-nav">
+        <div class="admin-brand">
+          <span class="brand-crest">UdeM</span>
+          <div>
+            <h2 class="admin-isolated-title">Consola de Control y Gestión BBDD</h2>
+            <span class="admin-isolated-sub">Grupo de Deportes &mdash; Universidad de Medellín</span>
+          </div>
+        </div>
+        <div class="admin-nav-actions">
+          <a href="#" class="btn btn-sm btn-outline-white">&#8592; Volver a la Página Principal</a>
+        </div>
+      </div>
+
+      <!-- ESTADO 1: FORMULARIO DE ACCESO (Visible cuando NO se ha iniciado sesión) -->
+      <div class="admin-gate-login">
+        <div class="admin-login-card">
+          <div class="login-badge-icon">&#128274;</div>
+          <h3>Iniciar Sesión como Administrador</h3>
+          <p class="login-subtext">Ingresa tus credenciales autorizadas para acceder a la gestión de bases de datos y multimedia.</p>
+          
+          <form class="portal-form" onsubmit="return false;">
+            <div class="form-group text-left">
+              <label>Correo Electrónico Institucional Autorizado</label>
+              <input type="email" placeholder="gramos261@soyudemedellin.edu.co" class="form-input" required>
+              <small class="field-hint">Autorizados: gramos261@, jcoral@, jgarciav@, mmontoya@, sdiaz881@</small>
+            </div>
+            <div class="form-group text-left">
+              <label>Contraseña Maestra</label>
+              <input type="password" placeholder="••••••••••••" class="form-input" required>
+              <small class="field-hint">Clave inicial: <code>Udemedellin2026*</code></small>
+            </div>
+            <div class="admin-notice">
+              <strong>Control de Privilegios:</strong> Los permisos de asignación de roles están reservados exclusivamente para el usuario raíz <em>Gustavo Andrés Ramos Quinto</em>.
+            </div>
+            <!-- Botón que activa la sesión persistente en CSS Puro -->
+            <label for="admin-session-check" class="btn btn-primary btn-block text-center cursor-pointer">
+              Iniciar Sesión y Desbloquear Gestión &rarr;
+            </label>
+          </form>
+        </div>
+      </div>
+
+      <!-- ESTADO 2: VISTA DE GESTIÓN Y BBDD (Visible ÚNICAMENTE tras iniciar sesión) -->
+      <div class="admin-unlocked-dashboard">
+        
+        <!-- Pestañas de Navegación de la Consola -->
+        <input type="radio" name="admin-dash-tab" id="tab-bbdd-gimnasio" checked class="dash-tab-radio">
+        <input type="radio" name="admin-dash-tab" id="tab-bbdd-escenarios" class="dash-tab-radio">
+        <input type="radio" name="admin-dash-tab" id="tab-bbdd-usuarios" class="dash-tab-radio">
+        <input type="radio" name="admin-dash-tab" id="tab-crud-galeria" class="dash-tab-radio">
+
+        <div class="dash-tab-bar">
+          <label for="tab-bbdd-gimnasio" class="dash-tab-label">&#127947; BBDD Gimnasio</label>
+          <label for="tab-bbdd-escenarios" class="dash-tab-label">&#9917; BBDD Escenarios</label>
+          <label for="tab-bbdd-usuarios" class="dash-tab-label">&#128101; BBDD Usuarios</label>
+          <label for="tab-crud-galeria" class="dash-tab-label highlight">&#128247; Gestión de Galería</label>
+        </div>
+
+        <div class="dash-tab-content-area">
+          
+          <!-- Pestaña 1: BBDD GIMNASIO -->
+          <div id="view-bbdd-gimnasio" class="dash-view-panel">
+            <div class="dash-view-header">
+              <div>
+                <h3>Base de Datos: Reservas del Gimnasio</h3>
+                <p>Monitoreo en vivo de los turnos de 2 horas y aforo máximo regulado a 30 cupos.</p>
+              </div>
+              <a href="https://docs.google.com/spreadsheets/d/16aguWRwOjrE1d99Hb1SYB-LvTi0D5G_U0v2hthtREyg/edit" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                Abrir en Google Sheets Oficial &nearr;
+              </a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="schedule-table">
+                <thead>
+                  <tr>
+                    <th>ID Reserva</th>
+                    <th>Usuario</th>
+                    <th>Documento</th>
+                    <th>Fecha Solicitada</th>
+                    <th>Turno (2 Horas)</th>
+                    <th>Aforo</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>GIM-2026-001</code></td>
+                    <td>Gustavo Andrés Ramos Quinto</td>
+                    <td>1000764201</td>
+                    <td>Hoy</td>
+                    <td>06:00 AM - 08:00 AM</td>
+                    <td><strong>18/30</strong></td>
+                    <td><span class="badge-status-approved">Aprobada</span></td>
+                    <td><button class="btn btn-sm btn-outline-dark" disabled>Verificada</button></td>
+                  </tr>
+                  <tr>
+                    <td><code>GIM-2026-002</code></td>
+                    <td>Sara Sofía Díaz Romero</td>
+                    <td>1020455891</td>
+                    <td>Hoy</td>
+                    <td>02:00 PM - 04:00 PM</td>
+                    <td><strong class="text-danger">30/30</strong></td>
+                    <td><span class="badge-status-approved">Aprobada</span></td>
+                    <td><button class="btn btn-sm btn-outline-dark" disabled>Lleno</button></td>
+                  </tr>
+                  <tr>
+                    <td><code>GIM-2026-003</code></td>
+                    <td>Mateo Botero López</td>
+                    <td>1017894523</td>
+                    <td>Mañana</td>
+                    <td>10:00 AM - 12:00 M</td>
+                    <td><strong>12/30</strong></td>
+                    <td><span class="badge-status-pending">Pendiente</span></td>
+                    <td><button class="btn btn-sm btn-primary">Aprobar</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Pestaña 2: BBDD ESCENARIOS -->
+          <div id="view-bbdd-escenarios" class="dash-view-panel">
+            <div class="dash-view-header">
+              <div>
+                <h3>Base de Datos: Reservas y Alquiler de Escenarios</h3>
+                <p>Control de franjas horarias de 60 minutos, tarifas de externos y auditoría de comprobantes.</p>
+              </div>
+              <a href="https://docs.google.com/spreadsheets/d/1bGwn3sFFe5rzsr0B9tda2XrL3O_YjQmBjdAhP1Y_cw8/edit" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                Abrir en Google Sheets Oficial &nearr;
+              </a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="schedule-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Solicitante</th>
+                    <th>Escenario</th>
+                    <th>Fecha &amp; Franja</th>
+                    <th>Tarifa</th>
+                    <th>Estado de Pago</th>
+                    <th>Comprobante</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>ESC-1082</code></td>
+                    <td>Torneo Interfacultades Derecho</td>
+                    <td>Cancha Fútbol 11</td>
+                    <td>Viernes 6:00 PM - 8:00 PM</td>
+                    <td>$0 COP (Comunidad)</td>
+                    <td><span class="badge-status-approved">Exento</span></td>
+                    <td>No Aplica</td>
+                    <td><button class="btn btn-sm btn-outline-dark" disabled>Aprobado</button></td>
+                  </tr>
+                  <tr>
+                    <td><code>ESC-1083</code></td>
+                    <td>Club Externo Belén F.C.</td>
+                    <td>Cancha Sintética</td>
+                    <td>Sábado 4:00 PM - 6:00 PM</td>
+                    <td>$180.000 COP</td>
+                    <td><span class="badge-status-pending">En Auditoría (15m)</span></td>
+                    <td><a href="#media-view-1" class="btn btn-sm btn-secondary">Auditar Recibo</a></td>
+                    <td><button class="btn btn-sm btn-primary">Validar Pago</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Pestaña 3: BBDD USUARIOS -->
+          <div id="view-bbdd-usuarios" class="dash-view-panel">
+            <div class="dash-view-header">
+              <div>
+                <h3>Base de Datos: Censo y Usuarios Registrados</h3>
+                <p>Directorio autenticado con validación de Habeas Data y matriz de privilegios.</p>
+              </div>
+              <a href="https://docs.google.com/spreadsheets/d/1saCE7IoIG0LLADoU7lc1irlg_e647Asdzj4uo3P7B4g/edit" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                Abrir en Google Sheets Oficial &nearr;
+              </a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="schedule-table">
+                <thead>
+                  <tr>
+                    <th>ID Usuario</th>
+                    <th>Nombre Completo</th>
+                    <th>Correo Electrónico</th>
+                    <th>Estamento</th>
+                    <th>Rol en el Sistema</th>
+                    <th>Habeas Data</th>
+                    <th>Permiso Admin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="row-highlight-root">
+                    <td><code>USR-ROOT-01</code></td>
+                    <td><strong>Gustavo Andrés Ramos Quinto</strong></td>
+                    <td>gramos261@soyudemedellin.edu.co</td>
+                    <td>Administrativo</td>
+                    <td><span class="badge-status-approved">SuperAdmin Root</span></td>
+                    <td>Aceptado</td>
+                    <td><strong>Inalterable / Vitalicio</strong></td>
+                  </tr>
+                  <tr>
+                    <td><code>USR-0045</code></td>
+                    <td>Jaime Coral Ibarra</td>
+                    <td>jcoral@udemedellin.edu.co</td>
+                    <td>Líder de Deportes</td>
+                    <td>Administrativo</td>
+                    <td>Aceptado</td>
+                    <td><input type="checkbox" checked disabled> Habilitado</td>
+                  </tr>
+                  <tr>
+                    <td><code>USR-0046</code></td>
+                    <td>Jorge García Viloria</td>
+                    <td>jgarciav@udemedellin.edu.co</td>
+                    <td>Auxiliar</td>
+                    <td>Administrativo</td>
+                    <td>Aceptado</td>
+                    <td><input type="checkbox" checked disabled> Habilitado</td>
+                  </tr>
+                  <tr>
+                    <td><code>USR-0047</code></td>
+                    <td>Manuela Montoya Vásquez</td>
+                    <td>mmontoya@udemedellin.edu.co</td>
+                    <td>Auxiliar</td>
+                    <td>Administrativo</td>
+                    <td>Aceptado</td>
+                    <td><input type="checkbox" checked disabled> Habilitado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Pestaña 4: GESTIÓN DE ELEMENTOS MULTIMEDIA DE LA GALERÍA -->
+          <div id="view-crud-galeria" class="dash-view-panel">
+            <div class="dash-view-header">
+              <div>
+                <h3>Gestión de la Galería Multimedia</h3>
+                <p>Añade nuevos contenidos, modifica títulos o elimina fotos y videos visibles en la página web pública.</p>
+              </div>
+            </div>
+
+            <div class="grid-2-cols">
+              <!-- Formulario de Añadir / Subir Multimedia -->
+              <div class="crud-form-card">
+                <h4 class="crud-card-title">&#10133; Añadir Elemento a la Galería</h4>
+                <form class="portal-form" onsubmit="return false;">
+                  <div class="form-group">
+                    <label>Título del Archivo Multimedia *</label>
+                    <input type="text" placeholder="Ej: Final Torneo de Voleibol Femenino" class="form-input" required>
+                  </div>
+                  
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label>Tipo de Contenido *</label>
+                      <select class="form-input" required>
+                        <option value="foto">Fotografía (JPG / PNG)</option>
+                        <option value="video">Video (MP4 / Enlace)</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Escenario Asignado *</label>
+                      <select class="form-input" required>
+                        <option value="canchas">Bloque 21 Canchas</option>
+                        <option value="coliseo">Bloque 1 Coliseo</option>
+                        <option value="piscina">Bloque 2 Piscina</option>
+                        <option value="gimnasio">Coliseo Gimnasio</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Seleccionar Archivo Multimedia *</label>
+                    <input type="file" accept="image/jpeg,image/png,video/mp4" class="form-input" required>
+                    <small class="field-hint">Dimensiones recomendadas: 1200x800 px. Peso máx: 5MB.</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripción corta para el pie de foto</label>
+                    <textarea rows="2" placeholder="Describe brevemente el momento de la competencia..." class="form-input"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block">Guardar y Publicar en Galería</button>
+                </form>
+              </div>
+
+              <!-- Lista de Elementos Actuales (Modificar / Eliminar) -->
+              <div class="crud-list-card">
+                <h4 class="crud-card-title">&#9776; Elementos Actualmente Publicados (6)</h4>
+                
+                <div class="crud-media-items-list">
+                  <div class="crud-media-row">
+                    <div class="crud-thumb-mini thumb-canchas"></div>
+                    <div class="crud-media-details">
+                      <strong>Cancha Sintética Bloque 21</strong>
+                      <span>Foto &bull; Escenario de Fútbol 11</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-thumb-mini thumb-coliseo"></div>
+                    <div class="crud-media-details">
+                      <strong>Coliseo Polideportivo</strong>
+                      <span>Foto &bull; Encuentro de Voleibol</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-thumb-mini thumb-gym"></div>
+                    <div class="crud-media-details">
+                      <strong>Rutinas Dirigidas en el Gimnasio</strong>
+                      <span>Video &bull; Acondicionamiento Físico</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-thumb-mini thumb-pool"></div>
+                    <div class="crud-media-details">
+                      <strong>Complejo Acuático Bloque 2</strong>
+                      <span>Foto &bull; Natación Formativa</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-thumb-mini thumb-artes"></div>
+                    <div class="crud-media-details">
+                      <strong>Exhibición de Artes Marciales</strong>
+                      <span>Video &bull; Taekwondo y Karate-Do</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+
+                  <div class="crud-media-row">
+                    <div class="crud-thumb-mini thumb-padel"></div>
+                    <div class="crud-media-details">
+                      <strong>Canchas de Pádel UdeMedellín</strong>
+                      <span>Foto &bull; Instalaciones Modernas</span>
+                    </div>
+                    <div class="crud-row-actions">
+                      <button class="btn-action-icon edit" title="Modificar">&#9998;</button>
+                      <button class="btn-action-icon delete" title="Eliminar">&times;</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODALES Y VENTANAS INTERACTIVAS (BANDEJA DE CORREO Y VISORES MULTIMEDIA)
+       ========================================================================= -->
+
+  <!-- Modal 1: Bandeja de Contacto con Opciones de Gmail y Outlook -->
+  <div id="contact-modal" class="modal-overlay">
+    <div class="modal-box">
+      <a href="#directorio" class="modal-close" aria-label="Cerrar Ventana">&times;</a>
+      <div class="modal-header">
+        <span class="modal-kicker">Canales Oficiales</span>
+        <h3 class="modal-title">Bandeja de Contacto Directo</h3>
+        <p class="modal-desc">Elige tu gestor de correo predeterminado para escribir a la Coordinación del Grupo de Deportes:</p>
+      </div>
+
+      <!-- Destinatarios Oficiales -->
+      <div class="contact-recipients-box">
+        <span class="recipients-label">Destinatarios incluidos:</span>
+        <ul class="recipients-list">
+          <li><strong>Jaime Coral Ibarra:</strong> <code>jcoral@udemedellin.edu.co</code> (Líder)</li>
+          <li><strong>Jorge García Viloria:</strong> <code>jgarciav@udemedellin.edu.co</code> (Auxiliar)</li>
+          <li><strong>Manuela Montoya Vásquez:</strong> <code>mmontoya@udemedellin.edu.co</code> (Auxiliar)</li>
+        </ul>
+      </div>
+
+      <!-- Opciones de Envío Directo a Gmail o Outlook -->
+      <div class="mail-clients-grid">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jcoral@udemedellin.edu.co,jgarciav@udemedellin.edu.co,mmontoya@udemedellin.edu.co&su=Consulta%20Grupo%20de%20Deportes%20UdeMedellin" target="_blank" rel="noopener" class="mail-client-btn btn-gmail">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+          <div>
+            <strong>Abrir en Google Gmail</strong>
+            <small>Redactar desde tu navegador</small>
+          </div>
+        </a>
+
+        <a href="https://outlook.office.com/mail/deeplink/compose?to=jcoral@udemedellin.edu.co,jgarciav@udemedellin.edu.co,mmontoya@udemedellin.edu.co&subject=Consulta%20Grupo%20de%20Deportes%20UdeMedellin" target="_blank" rel="noopener" class="mail-client-btn btn-outlook">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 7.667v8.666a3 3 0 0 1-3 3h-8V4.667h8a3 3 0 0 1 3 3zM11 4.667v14.666H3a3 3 0 0 1-3-3V7.667a3 3 0 0 1 3-3h8zm-3.5 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+          <div>
+            <strong>Abrir en Microsoft Outlook</strong>
+            <small>Web o aplicación institucional</small>
+          </div>
+        </a>
+
+        <a href="mailto:jcoral@udemedellin.edu.co,jgarciav@udemedellin.edu.co,mmontoya@udemedellin.edu.co?subject=Consulta%20Grupo%20de%20Deportes%20UdeMedellin" class="mail-client-btn btn-default-mail">
+          <span class="mail-icon">&#9993;</span>
+          <div>
+            <strong>Cliente de Correo por Defecto</strong>
+            <small>Abrir aplicación instalada en tu equipo</small>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visores de la Galería Multimedia en Pantalla Completa (Lightboxes CSS Puro) -->
+  <div id="media-view-1" class="modal-overlay lightbox-overlay">
+    <div class="lightbox-box">
+      <a href="#galeria" class="lightbox-close">&times;</a>
+      <div class="lightbox-media media-preview-canchas"></div>
+      <div class="lightbox-caption">
+        <h3>Cancha Sintética de Fútbol 11 (Bloque 21)</h3>
+        <p>Jornada nocturna con iluminación LED de alta potencia para partidos oficiales y selecciones representativas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="media-view-2" class="modal-overlay lightbox-overlay">
+    <div class="lightbox-box">
+      <a href="#galeria" class="lightbox-close">&times;</a>
+      <div class="lightbox-media media-preview-coliseo"></div>
+      <div class="lightbox-caption">
+        <h3>Coliseo Polideportivo Cubierto (Bloque 1)</h3>
+        <p>Instalaciones reglamentarias de voleibol y baloncesto con capacidad para eventos masivos y Juegos ASCUN.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="media-view-3" class="modal-overlay lightbox-overlay">
+    <div class="lightbox-box">
+      <a href="#galeria" class="lightbox-close">&times;</a>
+      <div class="lightbox-video-container">
+        <div class="video-placeholder-frame">
+          <span class="video-symbol">&#9658;</span>
+          <p>Reproductor de Video: Acondicionamiento Físico y Sala de Máquinas</p>
+          <small>Resolución 1080p Full HD</small>
+        </div>
+      </div>
+      <div class="lightbox-caption">
+        <h3>Rutinas Dirigidas en el Gimnasio UdeM</h3>
+        <p>Preparación física integral orientada por instructores profesionales para deportistas y comunidad universitaria.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="media-view-4" class="modal-overlay lightbox-overlay">
+    <div class="lightbox-box">
+      <a href="#galeria" class="lightbox-close">&times;</a>
+      <div class="lightbox-media media-preview-pool"></div>
+      <div class="lightbox-caption">
+        <h3>Complejo Acuático Semiolímpico (Bloque 2)</h3>
+        <p>Entrenamientos diarios de natación carreras, semilleros infantiles y clases guiadas de hidroaeróbicos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="media-view-5" class="modal-overlay lightbox-overlay">
+    <div class="lightbox-box">
+      <a href="#galeria" class="lightbox-close">&times;</a>
+      <div class="lightbox-video-container">
+        <div class="video-placeholder-frame">
+          <span class="video-symbol">&#9658;</span>
+          <p>Reproductor de Video: Exhibición de Combate Taekwondo y Karate-Do</p>
+          <small>Resolución 1080p Full HD</small>
+        </div>
+      </div>
+      <div class="lightbox-caption">
+        <h3>Exhibición de Artes Marciales en Coliseo</h3>
+        <p>Demostración técnica de las selecciones de Taekwondo y Karate-Do de la Universidad de Medellín.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="media-view-6" class="modal-overlay lightbox-overlay">
+    <div class="lightbox-box">
+      <a href="#galeria" class="lightbox-close">&times;</a>
+      <div class="lightbox-media media-preview-padel"></div>
+      <div class="lightbox-caption">
+        <h3>Canchas de Pádel y Tenis (Zona Deportiva)</h3>
+        <p>Instalaciones de primer nivel para la práctica recreativa y torneos de pádel universitarios.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DE INSTAGRAM (SOLO LOGO, PEQUEÑO Y MINIMALISTA) -->
+  <a href="https://instagram.com/deportesudemedellin" target="_blank" rel="noopener noreferrer" class="floating-instagram-button" title="Instagram @deportesudemedellin" aria-label="Seguir en Instagram a @deportesudemedellin">
+    <svg class="ig-float-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>
+  </a>
+
+  <!-- Pie de Página Institucional -->
+  <footer class="main-footer">
+    <!-- Frase Motivacional Deportiva Corta -->
+    <div class="footer-quote-strip">
+      <div class="container text-center">
+        <blockquote class="motivational-quote">
+          &ldquo;El deporte no construye el carácter: lo revela en cada entrenamiento, en cada competencia y en cada victoria de nuestra Universidad.&rdquo;
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="container footer-main-content">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand">
+            <span class="brand-crest">UdeM</span>
+            <div class="brand-text">
+              <span class="brand-title text-white">DEPORTES</span>
+              <span class="brand-sub">Universidad de Medellín</span>
+            </div>
+          </div>
+          <p class="footer-about">
+            Fomentamos la formación integral, la salud, la competencia de alto nivel y el bienestar de la comunidad universitaria a través de la cultura física.
+          </p>
+          <span class="footer-minedu">Institución de Educación Superior sujeta a inspección y vigilancia por el Ministerio de Educación Nacional.</span>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="#escenarios">Reserva de Escenarios</a></li>
+            <li><a href="#gimnasio">Turnos y Aforo Gimnasio</a></li>
+            <li><a href="#entrenamientos">Horarios de Selecciones</a></li>
+            <li><a href="#galeria">Galería Multimedia</a></li>
+            <li><a href="#directorio">Directorio Institucional</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Bases del Sistema</h4>
+          <ul class="footer-links">
+            <li><a href="https://docs.google.com/spreadsheets/d/16aguWRwOjrE1d99Hb1SYB-LvTi0D5G_U0v2hthtREyg/edit" target="_blank" rel="noopener">BBDD GIMNASIO</a></li>
+            <li><a href="https://docs.google.com/spreadsheets/d/1bGwn3sFFe5rzsr0B9tda2XrL3O_YjQmBjdAhP1Y_cw8/edit" target="_blank" rel="noopener">BBDD ESCENARIOS</a></li>
+            <li><a href="https://docs.google.com/spreadsheets/d/1saCE7IoIG0LLADoU7lc1irlg_e647Asdzj4uo3P7B4g/edit" target="_blank" rel="noopener">BBDD USUARIOS</a></li>
+            <li><a href="#admin-management-space">Consola de Control</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Atención y Soporte</h4>
+          <p class="footer-contact-item"><strong>Campus:</strong> Cra. 87 #30-65, Medellín, Colombia</p>
+          <p class="footer-contact-item"><strong>Bloques Deportivos:</strong> Coliseo (Bloque 1) y Canchas (Bloque 21)</p>
+          <div class="footer-contact-actions">
+            <a href="#contact-modal" class="btn btn-outline btn-sm">&#9993; Bandeja de Contacto</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 Universidad de Medellín &mdash; Grupo de Deportes. Todos los derechos reservados.</p>
+        <span class="legal-badge-footer">Vigilada MinEducación</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
